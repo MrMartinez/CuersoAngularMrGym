@@ -1,0 +1,39 @@
+<div layout="column" layout-align="center center" layout-fill="layout-fill">
+  <div layout="column" class="loginBox md-whiteframe-z1">
+    <mat-toolbar color="primary">
+      <h2 class="md-toolbar-tools"><span>Ingreso al Sistema</span></h2>
+    </mat-toolbar>
+  </div>
+  
+  <mat-card class="box">
+    <mat-card-title>Bienvenido</mat-card-title>
+    <mat-card-content>
+      <form (submit)="ingresar()" [formGroup]="form" action="">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Correo</mat-label>
+            <input formControlName="correo" matInput placeholder="Introduzca su Correo Electronico">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="form.invalid">{{obtenerErrorCampoCorreo()}}</mat-error>
+          </mat-form-field>
+
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Contrasena</mat-label>
+            <input formControlName="clave" matInput type="password" placeholder="Introduzca su Contrasena">
+            <mat-icon matSuffix>key</mat-icon>
+            <mat-error *ngIf="form.invalid">{{obternerErrorCampoClave()}}</mat-error>
+
+          </mat-form-field>
+        </div>
+        <div *ngIf="!usuarioExiste" class="alert alert-warning" role="alert">
+          <p class="danger">Usuario no Existe</p>
+        </div>
+        <button (click)="ingresar()" [disabled]="form.invalid" mat-flat-button color="primary">Acceder</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>

@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+body {
+  min-height: 100vh;
+	background-color: #380c0c;
+	font-family: 'Roboto', sans-serif;background-color: darkcyan;
+}
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  
+  display: flex;
+  justify-content: center;
+}
+
+.alert {
+  padding: 2px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert-warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
+}

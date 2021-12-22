@@ -1,7 +1,49 @@
-<mat-toolbar color="primary">
-<span>
-    <a mat-button>
-        <mat-icon class="mat-icon-rtl-mirror">fitness_center</mat-icon> Mr. Gym
-    </a>
-</span>
-</mat-toolbar>
+  <mat-toolbar color="primary" layout="row" layout-sm="column" layout-align="end " layout-wrap>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Mr. GYM</span>
+    <span class="flexExpand"></span>
+
+      <button mat-button [matMenuTriggerFor]="menuInscripcion">
+        Inscripciones       
+        <mat-icon>arrow_drop_down</mat-icon>        
+      </button>        
+      <mat-menu #menuInscripcion="matMenu">
+        <button mat-menu-item>Ver Inscripciones</button>
+        <button mat-menu-item>Registrar Inscripcion</button>
+      </mat-menu>
+  
+      <button mat-button [matMenuTriggerFor]="menuClientes">
+        Clientes
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menuClientes="matMenu">
+        <button mat-menu-item routerLink="listado-clientes">Ver Clientes</button>
+        <button mat-menu-item>Registrar Cliente</button>
+      </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="menuPrecios">
+        Precios
+        <mat-icon>arrow_drop_down</mat-icon>        
+      </button>        
+      <mat-menu #menuPrecios="matMenu">
+        <button mat-menu-item>Ver Precios</button>
+        <button mat-menu-item>Registrar Precios</button>
+      </mat-menu>
+
+      <button mat-button [matMenuTriggerFor]="menuUsuarios">
+        Usuarios       
+        <mat-icon>arrow_drop_down</mat-icon>        
+      </button>        
+      <mat-menu #menuUsuarios="matMenu">
+        <button mat-menu-item>Ver Usuarios</button>
+        <button mat-menu-item>Registrar Usuarios</button>
+      </mat-menu>
+
+      <button mat-button class="btnSalir" (click)="salir() ">Salir
+
+      </button>
+  </mat-toolbar>
+
+

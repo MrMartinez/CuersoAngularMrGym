@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireAuth  } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 
 @Component({
@@ -8,15 +8,17 @@ import firebase from 'firebase/compat/app';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MrGym';
-
-  constructor(private auth: AngularFireAuth){}
-
-  login(){
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  title = 'MrGym';  
+  cargando: boolean = true;
+  usuario : any;
+  constructor(public auth: AngularFireAuth){
+    this.auth.user.subscribe((user)=>{
+      setTimeout(() => {
+        this.cargando=false;
+      this.usuario = user;
+      }, 2000);
+    });
   }
 
-  logout(){
-    this.auth.signOut();
-  }
+
 }
