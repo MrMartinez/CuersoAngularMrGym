@@ -16,6 +16,7 @@ import { ListadoClientesComponent } from './listado-clientes/listado-clientes.co
 import { InscripcionesComponent } from './inscripciones/inscripciones.component';
 // import {LayoutModule} from '@angular/cdk/layout';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 
@@ -41,7 +42,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
-    AngularFireAuth
+    AngularFireAuth,
+    AngularFirestore
   ],
   bootstrap: [AppComponent]
 })
