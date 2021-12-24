@@ -9,8 +9,11 @@ import { ICliente } from '../Models/cliente';
   styleUrls: ['./listado-clientes.component.css'],
 })
 export class ListadoClientesComponent implements OnInit {
-  clientes: any[] = new Array<any>();
-  constructor(private db: AngularFirestore) {}
+  clientes: ICliente[] = [];
+  cliente: ICliente | null;
+  constructor(private db: AngularFirestore) {
+    this.cliente = null;
+  }
 
   ngOnInit(): void {
     // this.db
@@ -29,7 +32,18 @@ export class ListadoClientesComponent implements OnInit {
           var clienteDB = item.data();
           clienteDB.id = item.id;
           clienteDB.ref = item.ref;
-          this.clientes.push(clienteDB);
+          this.cliente = {
+            ClienteId: clienteDB.id,
+            Nombres: clienteDB['Apellidos'],
+            Apellidos: clienteDB['Nombres'],
+            Cedula: clienteDB['Cedula'],
+            Direccion: clienteDB['Direccion'],
+            Email: clienteDB['Email'],
+            FechaNacimiento: clienteDB['FechaNacimiento'],
+            ImgUrl: clienteDB['ImgUrl'],
+            Telefono: clienteDB['Telefono'],
+          };
+          this.clientes.push(this.cliente);
         });
       });
   }

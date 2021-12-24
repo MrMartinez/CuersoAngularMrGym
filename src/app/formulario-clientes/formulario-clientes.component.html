@@ -1,0 +1,91 @@
+<form [formGroup]="form" action="">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Creacion de Cliente
+      </mat-card-title>
+      <mat-card-content>
+        <div fxLayout="row">
+          <div fxFlexOffset="6" fxFlex="100">
+            <mat-form-field appearance="standard">
+              <mat-label>Nombres</mat-label>
+              <input formControlName="Nombres" matInput>
+              <mat-error *ngIf="form.invalid">{{getErrorMessage()}}</mat-error>
+
+            </mat-form-field>
+          </div>
+          <div fxFlexOffset="6" fxFlex="100">
+            <mat-form-field appearance="standard" [floatLabel]="'auto'">
+              <mat-label>Apellidos</mat-label>
+              <input formControlName="Apellidos" matInput>
+              <mat-error *ngIf="form.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlexOffset="6" fxFlex="100">
+            <mat-form-field appearance="standard">
+              <mat-label>Apellidos</mat-label>
+              <input formControlName="Apellidos" matInput>
+              <mat-error *ngIf="form.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlexOffset="6" fxFlex="100">
+            <mat-form-field appearance="standard">
+              <mat-label>Cedula</mat-label>
+              <input formControlName="Cedula" matInput>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlexOffset="3" fxFlex="100">
+            <mat-form-field appearance="fill">
+              <mat-label>Telefono</mat-label>
+              <input formControlName="Telefono" matInput>
+            </mat-form-field>
+          </div>
+          <div fxFlexOffset="3" fxFlex="100">
+            <mat-form-field appearance="fill">
+              <mat-label>Direccion</mat-label>
+              <input formControlName="Direccion" matInput>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout.md="row">
+          <div fxFlexOffset="6" fxFlex="100">
+            <mat-form-field class="example-full-width">
+              <mat-label>Seleccione una fecha</mat-label>
+              <input formControlName="FechaNacimiento" matInput [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <!-- <mat-error *ngIf="userDetailsForm.controls.date?.errors">
+                        Fecha Invalida
+                      </mat-error> -->
+            </mat-form-field>
+          </div>
+          <div fxFlexOffset="6" fxFlex="100">
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input formControlName="Email" matInput>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout.md="row">
+          <div fxFlexOffset="6" fxFlex="100">
+            <mat-form-field>
+              <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+              <input hidden formControlName="ImgUrl" (click)="onFileSelected()" #fileInput id="file" matInput>
+
+            </mat-form-field>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card-header>
+    <mat-card-actions>
+
+      <button mat-raised-button color="primary"> Guardar</button>
+    </mat-card-actions>
+  </mat-card>
+
+</form>

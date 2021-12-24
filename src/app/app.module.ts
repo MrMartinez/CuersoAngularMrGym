@@ -17,6 +17,7 @@ import { InscripcionesComponent } from './inscripciones/inscripciones.component'
 // import {LayoutModule} from '@angular/cdk/layout';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FormularioClientesComponent } from './formulario-clientes/formulario-clientes.component';
 
 
 
@@ -28,7 +29,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
     MenuComponent,
     LoginComponent,
     ListadoClientesComponent,
-    InscripcionesComponent
+    InscripcionesComponent,
+    FormularioClientesComponent
   ],
   imports: [
     BrowserModule,
