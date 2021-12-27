@@ -1,37 +1,43 @@
-<br>
-<div fxLayoutAlign="end center">
-  <form action="">
-    <mat-form-field appearance="outline">
-      <mat-label>Buscar</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-hint>Buscar cliente</mat-hint>
-    </mat-form-field>
-  </form>
-</div>
-<br>
-<div fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayout.sm="column"
-  fxLayout.md="row">
+<mat-card>
+  <div fxLayoutAlign="end center">
+    <form action="">
+      <mat-form-field appearance="outline">
+        <mat-label>Buscar</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-hint>Buscar cliente</mat-hint>
+      </mat-form-field>
+    </form>
+  </div>
+  <mat-card-title>Listado de clientes</mat-card-title>
+  <mat-card-content>
+    <br>
 
-  <mat-card class="tarjetaCliente" *ngFor="let cliente of clientes">
-    <mat-card-title-group>
-      <mat-card-title>{{cliente.Nombres}}</mat-card-title>
-      <mat-card-subtitle>{{cliente.Apellidos}}</mat-card-subtitle>
-      <img mat-card-md-image [src]="cliente.ImgUrl">
-    </mat-card-title-group>
-    <mat-card-content>
-      <p>Telefono: {{cliente.Telefono}}</p>
-      <p>Email: {{cliente.Email}}</p>
-      <p>Direccion: {{cliente.Direccion}}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button style="color:royalblue;">
-        <mat-icon>edit</mat-icon> Editar
-      </button>
-      <button mat-button color="warn">
-        <mat-icon>delete_outline</mat-icon> Eliminar
-      </button>
-    </mat-card-actions>
-  </mat-card>
+    <br>
+    <div fxLayout="row warp" fxLayout.xs="column" fxLayout.sm="column">
+      <mat-card class="tarjetaCliente" *ngFor="let cliente of clientes">
+        <mat-card-title-group>
+          <mat-card-title>{{cliente.Nombres}}</mat-card-title>
+          <mat-card-subtitle>{{cliente.Apellidos}}</mat-card-subtitle>
+          <img class="img" mat-card-md-image [src]="cliente.ImgUrl">
+        </mat-card-title-group>
+        <mat-card-content>
+          <p>Telefono: {{cliente.Telefono}}</p>
+          <p>Email: {{cliente.Email}}</p>
+          <p>Direccion: {{cliente.Direccion}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button style="color:royalblue;" [routerLink]="['/agregar-cliente/',cliente.ClienteId]">
+            <mat-icon>edit</mat-icon> Editar
+          </button>
+          <button mat-button color="warn">
+            <mat-icon>delete_outline</mat-icon> Eliminar
+          </button>
+        </mat-card-actions>
+      </mat-card>
 
-</div>
+    </div>
+
+
+  </mat-card-content>
+</mat-card>

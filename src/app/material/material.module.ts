@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [],
@@ -29,6 +30,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatGridListModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressBarModule,
   ],
   imports: [CommonModule],
 })

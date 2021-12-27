@@ -8,7 +8,14 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   // {path: '', component:InscripcionesComponent},
   { path: 'listado-clientes', component: ListadoClientesComponent },
-  { path: 'agregar-cliente', component: FormularioClientesComponent },
+  {
+    path: 'agregar-cliente',
+    component: FormularioClientesComponent,
+  },
+  {
+    path: 'agregar-cliente/:clienteId',
+    component: FormularioClientesComponent,
+  },
 ];
 
 @NgModule({
