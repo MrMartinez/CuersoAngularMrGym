@@ -23,14 +23,15 @@
     <button mat-menu-item routerLink="agregar-cliente">Registrar Cliente</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="menuPrecios">
+  <button mat-button routerLink="precios">
+    <!-- <button mat-button [matMenuTriggerFor]="menuPrecios"> -->
     Precios
-    <mat-icon>arrow_drop_down</mat-icon>
+    <!-- <mat-icon>arrow_drop_down</mat-icon> -->
   </button>
-  <mat-menu #menuPrecios="matMenu">
+  <!-- <mat-menu #menuPrecios="matMenu">
     <button mat-menu-item>Ver Precios</button>
     <button mat-menu-item>Registrar Precios</button>
-  </mat-menu>
+  </mat-menu> -->
 
   <button mat-button [matMenuTriggerFor]="menuUsuarios">
     Usuarios

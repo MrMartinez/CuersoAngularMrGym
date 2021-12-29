@@ -1,3 +1,4 @@
+import { PreciosComponent } from './precios/precios.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormularioClientesComponent } from './formulario-clientes/formulario-clientes.component';
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'agregar-cliente/:clienteId',
     component: FormularioClientesComponent,
+  },
+  {
+    path: 'precios',
+    component: PreciosComponent,
   },
 ];
 

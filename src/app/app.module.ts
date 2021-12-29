@@ -19,6 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormularioClientesComponent } from './formulario-clientes/formulario-clientes.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { PreciosComponent } from './precios/precios.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     ListadoClientesComponent,
     InscripcionesComponent,
     FormularioClientesComponent,
+    PreciosComponent,
   ],
   imports: [
     BrowserModule,

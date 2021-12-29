@@ -1,0 +1,63 @@
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="star">
+  <form [formGroup]="form">
+    <div fxFlex="60%">
+      <h3>Listado de precios</h3>
+      <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let precio of listadoPrecios">
+          {{precio.nombre}} {{precio.costo}}
+        </mat-list-item>
+      </mat-list>
+
+    </div>
+    <div fxFlex="40%">
+      <h3>Formulario crear precio</h3>
+      <div>
+        <mat-card>
+          <mat-label>
+            Creacion / Ediccion de Precios
+          </mat-label>
+          <mat-card-content>
+            <mat-form-field appearance="fill">
+              <mat-label>
+                Nombre:
+              </mat-label>
+              <input formControlName="nombre" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>
+                Costo:
+              </mat-label>
+              <input formControlName="costo" matInput />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>
+                Duracion:
+              </mat-label>
+              <input formControlName="duracion" matInput />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>
+                Tipo Duracion:
+              </mat-label>
+              <select formControlName="tipoDuracion" matNativeControl required>
+
+                <option value="1">Dia</option>
+                <option value="2">Semana</option>
+                <option value="3">Quincena</option>
+                <option value="4">Mes</option>
+                <option value="5">A#o</option>
+              </select>
+
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+    </div>
+    <div fxLayout="row">
+      <button (click)="crearPrecio()" [disabled]="form.invalid" mat-flat-button color="primary">Guardar</button>
+      <button (click)="editarPrecio()" [disabled]="form.invalid" mat-flat-button color="warn">Editar</button>
+    </div>
+  </form>
+
+</div>
