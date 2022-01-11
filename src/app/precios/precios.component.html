@@ -4,7 +4,7 @@
       <h3>Listado de precios</h3>
       <mat-list role="list">
         <mat-list-item role="listitem" *ngFor="let precio of listadoPrecios" (click)="editarPrecio(precio)">
-          {{precio.nombre}} {{precio.costo |currency}} <button (click)="eliminarPrecio()">
+          {{precio.nombre}} {{precio.costo |currency}} <button (click)="eliminarPrecio(precio)">
             <mat-icon color="warn"> delete</mat-icon>
           </button>
         </mat-list-item>

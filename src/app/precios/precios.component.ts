@@ -103,7 +103,7 @@ export class PreciosComponent implements OnInit {
         });
       });
   }
-  eliminarPrecio() {
+  eliminarPrecio(precio: IPrecio) {
     Swal.fire({
       title: 'Eliminar Precio',
       text: '¿Seguro desea eliminar este precio?',
@@ -115,7 +115,22 @@ export class PreciosComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.value) {
-        alert('Dijo que si');
+        this.db
+          .doc('Precios/' + this.precioId)
+          .delete()
+          .then(() => {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Precio eliminado',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            this.form.reset();
+            this.esEditable = false;
+            this.listadoPrecios = [];
+            this.muestraPrecios();
+          });
       }
     });
   }
