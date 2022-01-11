@@ -1,15 +1,17 @@
-<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="star">
-  <form [formGroup]="form">
-    <div fxFlex="60%">
+<form [formGroup]="form">
+  <div fxLayout="row">
+    <div fxFlex="40%">
       <h3>Listado de precios</h3>
       <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let precio of listadoPrecios">
-          {{precio.nombre}} {{precio.costo}}
+        <mat-list-item role="listitem" *ngFor="let precio of listadoPrecios" (click)="editarPrecio(precio)">
+          {{precio.nombre}} {{precio.costo |currency}} <button (click)="eliminarPrecio()">
+            <mat-icon color="warn"> delete</mat-icon>
+          </button>
         </mat-list-item>
       </mat-list>
 
     </div>
-    <div fxFlex="40%">
+    <div fxFlex="60%">
       <h3>Formulario crear precio</h3>
       <div>
         <mat-card>
@@ -51,13 +53,15 @@
             </mat-form-field>
           </mat-card-content>
         </mat-card>
-
+      </div>
+      <div fxLayout="row">
+        <button *ngIf="!esEditable" (click)="crearPrecio()" [disabled]="form.invalid" mat-flat-button
+          color="primary">Guardar</button>
+        <button *ngIf="esEditable" (click)="editar()" [disabled]="!esEditable" mat-flat-button
+          color="warn">Editar</button>
       </div>
     </div>
-    <div fxLayout="row">
-      <button (click)="crearPrecio()" [disabled]="form.invalid" mat-flat-button color="primary">Guardar</button>
-      <button (click)="editarPrecio()" [disabled]="form.invalid" mat-flat-button color="warn">Editar</button>
-    </div>
-  </form>
 
-</div>
+  </div>
+
+</form>

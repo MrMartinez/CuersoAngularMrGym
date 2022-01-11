@@ -12,9 +12,11 @@ import Swal from 'sweetalert2';
 export class PreciosComponent implements OnInit {
   form: FormGroup;
   listadoPrecios: IPrecio[] = new Array<IPrecio>();
-  precio: IPrecio | null;
+  precio: IPrecio | null = null;
+  esEditable: boolean = false;
+  precioId: string = '';
+
   constructor(private formBuilder: FormBuilder, private db: AngularFirestore) {
-    this.precio = null;
     this.form = this.formBuilder.group({
       nombre: ['', Validators.required],
       costo: ['', Validators.required],
@@ -23,25 +25,8 @@ export class PreciosComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.db
-      .collection<any>('Precios')
-      .get()
-      .subscribe((resultado) => {
-        resultado.docs.forEach((item) => {
-          var precioDB = item.data();
-          precioDB.id = item.id;
-          precioDB.ref = item.ref;
-
-          this.precio = {
-            precioId: precioDB.id,
-            nombre: precioDB['nombre'],
-            duracion: parseInt(precioDB['duracion']),
-            costo: precioDB['nombre'],
-            tipoDuracion: precioDB['nombre'],
-          };
-          this.listadoPrecios.push(this.precio);
-        });
-      });
+    this.listadoPrecios = [];
+    this.muestraPrecios();
   }
 
   crearPrecio() {
@@ -52,13 +37,86 @@ export class PreciosComponent implements OnInit {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Cliente creado exitosamente',
+          title: 'Precio creado exitosamente',
           showConfirmButton: false,
           timer: 1500,
         });
-        this.form.reset;
+        this.form.reset();
+        this.listadoPrecios = [];
+        this.muestraPrecios();
+      })
+      .catch(() => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Error creando precio',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
-    console.log(this.form.value);
   }
-  editarPrecio() {}
+  editar() {
+    this.db
+      .doc('Precios/' + this.precioId)
+      .update(this.form.value)
+      .then(() => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Precio actualizado',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.form.reset();
+        this.esEditable = false;
+        this.listadoPrecios = [];
+        this.muestraPrecios();
+      });
+  }
+  editarPrecio(precio: IPrecio) {
+    this.esEditable = true;
+    this.form.setValue({
+      nombre: precio.nombre,
+      costo: precio.costo,
+      duracion: precio.duracion,
+      tipoDuracion: precio.tipoDuracion,
+    });
+    this.precioId = precio.precioId;
+  }
+  muestraPrecios() {
+    this.db
+      .collection<any>('Precios')
+      .get()
+      .subscribe((resultado) => {
+        resultado.docs.forEach((item) => {
+          var precioDB = item.data();
+          precioDB.id = item.id;
+          precioDB.ref = item.ref;
+          this.precio = {
+            precioId: precioDB.id,
+            nombre: precioDB['nombre'],
+            duracion: parseInt(precioDB['duracion']),
+            costo: precioDB['costo'],
+            tipoDuracion: precioDB['tipoDuracion'],
+          };
+          this.listadoPrecios.push(this.precio);
+        });
+      });
+  }
+  eliminarPrecio() {
+    Swal.fire({
+      title: 'Eliminar Precio',
+      text: '¿Seguro desea eliminar este precio?',
+      icon: 'warning',
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#FA1E18',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.value) {
+        alert('Dijo que si');
+      }
+    });
+  }
 }
