@@ -1,2 +1,14 @@
-<app-menu></app-menu>
-<router-outlet></router-outlet>
+
+<div *ngIf="usuario && !cargando else showLogin">
+    <app-menu></app-menu>    
+    <router-outlet></router-outlet>
+</div>
+
+<ng-template #showLogin>
+  <div fxLayout="column" >
+    <div *ngIf="cargando" fxLayoutAlign="center center">
+        <mat-spinner color="warn"></mat-spinner>
+    </div>
+    <app-login *ngIf="!cargando" ></app-login>
+  </div>
+</ng-template>

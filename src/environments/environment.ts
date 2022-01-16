@@ -4,15 +4,15 @@
 
 export const environment = {
   production: false,
-  firebase:{
-  apiKey: "AIzaSyBieOmCjTz07f1uGsW10YFNSBF0XqQDciw",
-  authDomain: "mrgym-bfdd7.firebaseapp.com",
-  projectId: "mrgym-bfdd7",
-  storageBucket: "mrgym-bfdd7.appspot.com",
-  messagingSenderId: "58354262264",
-  appId: "1:58354262264:web:af0f5da1bdc5d06c045b0d",
-  measurementId: "G-QLDF3B1SEF"
-  }
+  firebase: {
+    apiKey: 'AIzaSyBieOmCjTz07f1uGsW10YFNSBF0XqQDciw',
+    authDomain: 'mrgym-bfdd7.firebaseapp.com',
+    projectId: 'mrgym-bfdd7',
+    storageBucket: 'mrgym-bfdd7.appspot.com',
+    messagingSenderId: '58354262264',
+    appId: '1:58354262264:web:af0f5da1bdc5d06c045b0d',
+    measurementId: 'G-QLDF3B1SEF',
+  },
 };
 
 /*

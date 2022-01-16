@@ -4,3 +4,11 @@ mat-toolbar{
     top: 0;
     z-index: 1000;
 }
+.flexExpand {
+    flex: 1 1 auto;
+  }
+  .btnSalir{
+      
+      background-color: red;      
+      font-size: medium;
+  }

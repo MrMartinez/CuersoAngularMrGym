@@ -1,0 +1,25 @@
+<table mat-table class="mat-elevation-z8">
+  <thead>
+    <th>Cliente</th>
+    <th>Inicia</th>
+    <th>Termina</th>
+    <th>Precio</th>
+  </thead>
+  <tfoot>
+    <th>Cliente</th>
+    <th>Inicia</th>
+    <th>Termina</th>
+    <th>Precio</th>
+  </tfoot>
+  <tbody>
+    <tr *ngFor="let inscripcion of listadoInscripciones">
+      <td>{{inscripcion.Cliente.Nombres}} {{inscripcion.Cliente.Apellidos}}</td>
+      <td>{{inscripcion.fechaInicio | date}}</td>
+      <td>{{inscripcion.fechaFinal | date}}</td>
+      <td>{{inscripcion.precio}}</td>
+      <td>
+        <img width="50px" [src]="inscripcion.Cliente.ImgUrl">
+      </td>
+    </tr>
+  </tbody>
+</table>
