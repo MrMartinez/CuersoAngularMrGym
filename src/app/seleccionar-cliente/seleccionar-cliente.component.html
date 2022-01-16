@@ -1,0 +1,25 @@
+<mat-form-field appearance="fill">
+  <div fxLayout="row" *ngIf="!nombreCliente">
+    <mat-label fxFlex="70%">Buscar Cliente </mat-label>
+    <input fxFlex="30%" matInput (input)="buscarCliente($event.target )">
+  </div>
+  <div fxLayout="row" *ngIf="nombreCliente">
+    <mat-form-field>
+      <div fxFlex="90%">
+        <mat-label>Cliente seleccionado</mat-label>
+        <input type="text" disabled matInput appearance="fill" [(ngModel)]="nombreCliente" />
+
+      </div>
+      <div fxFlex="10%" fxLayoutAlign="end">
+        <mat-icon (click)="cancelarCliente()">cancel</mat-icon>
+
+      </div>
+    </mat-form-field>
+  </div>
+  <mat-list *ngIf="!nombreCliente">
+    <mat-list-item *ngFor="let cliente of listadoClientes">
+      <a *ngIf="cliente.visible" (click)="clienteSeleccionado(cliente)">{{cliente.Nombres}}
+        {{cliente.Apellidos}}</a>
+    </mat-list-item>
+  </mat-list>
+</mat-form-field>

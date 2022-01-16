@@ -2,7 +2,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ICliente } from '../Models/cliente';
+import { Cliente } from '../Models/cliente';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class FormularioClientesComponent implements OnInit {
   form: FormGroup;
-  cliente: ICliente | null;
+  cliente: Cliente | null;
   subiendo: boolean | null;
   porcentajeImagenSubida: any;
   urlImagen: string = '';

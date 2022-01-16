@@ -10,8 +10,8 @@
     <mat-icon>arrow_drop_down</mat-icon>
   </button>
   <mat-menu #menuInscripcion="matMenu">
-    <button mat-menu-item>Ver Inscripciones</button>
-    <button mat-menu-item>Registrar Inscripcion</button>
+    <button mat-menu-item routerLink="listado-inscripciones">Ver Inscripciones</button>
+    <button mat-menu-item routerLink="agregar-inscripcion">Registrar Inscripcion</button>
   </mat-menu>
 
   <button mat-button [matMenuTriggerFor]="menuClientes">

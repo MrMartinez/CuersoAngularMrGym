@@ -1,4 +1,4 @@
-import { IPrecio } from './../Models/precio';
+import { Precio } from './../Models/precio';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -11,8 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class PreciosComponent implements OnInit {
   form: FormGroup;
-  listadoPrecios: IPrecio[] = new Array<IPrecio>();
-  precio: IPrecio | null = null;
+  listadoPrecios: Precio[] = new Array<Precio>();
+  precio: Precio | null = null;
   esEditable: boolean = false;
   precioId: string = '';
 
@@ -73,7 +73,7 @@ export class PreciosComponent implements OnInit {
         this.muestraPrecios();
       });
   }
-  editarPrecio(precio: IPrecio) {
+  editarPrecio(precio: Precio) {
     this.esEditable = true;
     this.form.setValue({
       nombre: precio.nombre,
@@ -81,7 +81,7 @@ export class PreciosComponent implements OnInit {
       duracion: precio.duracion,
       tipoDuracion: precio.tipoDuracion,
     });
-    this.precioId = precio.precioId;
+    this.precioId = precio.id;
   }
   muestraPrecios() {
     this.db
@@ -92,18 +92,18 @@ export class PreciosComponent implements OnInit {
           var precioDB = item.data();
           precioDB.id = item.id;
           precioDB.ref = item.ref;
-          this.precio = {
-            precioId: precioDB.id,
-            nombre: precioDB['nombre'],
-            duracion: parseInt(precioDB['duracion']),
-            costo: precioDB['costo'],
-            tipoDuracion: precioDB['tipoDuracion'],
-          };
-          this.listadoPrecios.push(this.precio);
+          // this.precio = {
+          //   id: precioDB.id,
+          //   nombre: precioDB['nombre'],
+          //   duracion: parseInt(precioDB['duracion']),
+          //   costo: precioDB['costo'],
+          //   tipoDuracion: precioDB['tipoDuracion'],
+          // };
+          this.listadoPrecios.push(precioDB);
         });
       });
   }
-  eliminarPrecio(precio: IPrecio) {
+  eliminarPrecio(precio: Precio) {
     Swal.fire({
       title: 'Eliminar Precio',
       text: '¿Seguro desea eliminar este precio?',

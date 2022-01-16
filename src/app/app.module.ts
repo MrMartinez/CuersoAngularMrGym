@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormularioClientesComponent } from './formulario-clientes/formulario-clientes.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { PreciosComponent } from './precios/precios.component';
+import { SeleccionarClienteComponent } from './seleccionar-cliente/seleccionar-cliente.component';
+import { FormularioInscripcionComponent } from './formulario-inscripcion/formulario-inscripcion.component';
+import { MensajeValidacionService } from './servicios/mensaje-validacion.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,8 @@ import { PreciosComponent } from './precios/precios.component';
     InscripcionesComponent,
     FormularioClientesComponent,
     PreciosComponent,
+    SeleccionarClienteComponent,
+    FormularioInscripcionComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,13 +43,14 @@ import { PreciosComponent } from './precios/precios.component';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    FormsModule,
     // LayoutModule,
     FlexLayoutModule,
     AngularFireStorageModule,
 
     AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [AngularFireAuth, AngularFirestore],
+  providers: [AngularFireAuth, AngularFirestore, MensajeValidacionService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

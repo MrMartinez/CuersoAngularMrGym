@@ -1,0 +1,77 @@
+<h4>Inscripcion</h4>
+<div fxLayout="row">
+  <div fxFlex="60%">
+    <app-seleccionar-cliente [nombreCliente]="clienteSeleccionado?.Nombres" (seleccionoCliente)="asignarCliente($event)"
+      (canceloCliente)="eliminarCliente()">
+    </app-seleccionar-cliente>
+
+    <div>
+      <select (change)="seleccionarPrecio($event.target)">
+        <option [value]="null">Seleccione el precio</option>
+        <option *ngFor="let precio of listadoPrecios" [value]="precio.id"> {{precio.nombre}}</option>
+      </select>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Precios</mat-label>
+
+        <mat-select (change)="seleccionarPrecio($event.target)">
+          <mat-option *ngFor="let precio of listadoPrecios" [value]="precio.id">
+            {{precio.nombre }} {{precio.costo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Fecha Inicio</mat-label>
+        <input matInput type="text" disabled [value]="inscripcion.fechaInicio| date">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Fecha Finaliza</mat-label>
+        <input matInput type="text" disabled [value]="inscripcion.fechaFinal | date">
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxFlex="40%">
+
+    <div *ngIf="clienteSeleccionado">
+      <img [src]="clienteSeleccionado?.ImgUrl" class="imgCliente">
+    </div>
+    <div>
+
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Sub Total</mat-label>
+
+        <input matInput [value]="inscripcion.subTotal" type="number" disabled>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Itbis</mat-label>
+        <input matInput [value]="inscripcion.itbis" type="number" disabled>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Total</mat-label>
+        <input matInput [value]="inscripcion.total" type="number" disabled>
+      </mat-form-field>
+    </div>
+    <button (click)="guardarInscripcion()">Guardar</button>
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Precios </mat-label>
+      <mat-select>
+        <mat-option *ngFor="let precio of listadoPrecios" [value]="precio.nombre">
+          {{precio.nombre}} {{precio.costo}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+  </div>
+
+
+</div>
